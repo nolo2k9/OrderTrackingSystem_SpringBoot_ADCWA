@@ -3,6 +3,7 @@ package com.sales.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,11 +18,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name="ORDERS")
 public class Order {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="OID")
 	private Long oId;
 	
-	@Min(1)
+	@Min(value=1, message="must be greater than or equal to 1")
 	@Column(name="QTY")
 	private int qty;
 	
